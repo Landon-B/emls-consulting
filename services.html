@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | EMLS Consulting</title>
+  <meta name="description" content="Full-spectrum behavioral health consulting from feasibility through launch and stabilization. AHCA & DCF licensure, clinical program design, workforce development, and more.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ---- SERVICES INTRO ---- */
+    .services-intro { background: var(--warm-white); padding: 96px 0; }
+    .services-intro-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .services-intro h2 { font-size: clamp(32px, 3.5vw, 52px); color: var(--teal); margin-bottom: 24px; }
+    .services-intro p { font-size: 17px; color: var(--slate-mid); line-height: 1.85; margin-bottom: 20px; }
+    .services-stat-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 8px;
+    }
+    .services-stat {
+      background: var(--teal-light);
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+    }
+    .services-stat-num {
+      font-family: Georgia, serif;
+      font-size: 40px;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .services-stat-label { font-size: 13px; color: var(--slate-mid); }
+
+    /* ---- PHASE CARDS ---- */
+    .phases { background: #fff; padding: 96px 0; }
+    .phases-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .phases-inner > h2 { font-size: clamp(32px, 3.5vw, 52px); color: var(--teal); margin-bottom: 8px; }
+    .phases-inner > p { font-size: 17px; color: var(--slate-mid); max-width: 600px; margin-bottom: 64px; }
+
+    .phase-block {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 0;
+      margin-bottom: 2px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .phase-label-col {
+      background-color: #0F4A52;
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .phase-num {
+      font-family: Georgia, serif;
+      font-size: 52px;
+      color: rgba(255,255,255,0.25);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .phase-name {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .phase-content { background: #fff; padding: 40px 48px; }
+    .phase-content h3 {
+      font-size: 26px;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .phase-content > p { font-size: 15px; color: var(--slate-mid); line-height: 1.75; margin-bottom: 24px; }
+    .phase-items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 32px;
+    }
+    .phase-item {
+      font-size: 14px;
+      color: var(--slate);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .phase-item::before {
+      content: '';
+      display: block;
+      width: 5px; height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ---- ADDITIONAL SERVICES ---- */
+    .additional { background: var(--warm-white); padding: 96px 0; }
+    .additional-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .additional-inner h2 { font-size: clamp(28px, 3vw, 44px); color: var(--teal); margin-bottom: 48px; }
+    .additional-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .additional-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px 28px;
+      border-top: 3px solid var(--gold);
+    }
+    .additional-card h4 {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .additional-card p { font-size: 14px; color: var(--slate-mid); line-height: 1.7; }
+
+    /* ---- PROPOSAL CTA ---- */
+    .proposal-cta { background-color: #0F4A52; padding: 96px 0; }
+    .proposal-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+    }
+    .proposal-inner h2 { font-size: clamp(32px, 3.5vw, 52px); color: #fff; margin-bottom: 16px; }
+    .proposal-inner p { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 560px; }
+    .proposal-actions { display: flex; flex-direction: column; gap: 12px; }
+
+    @media (max-width: 960px) {
+      .services-intro-inner { grid-template-columns: 1fr; gap: 48px; }
+      .phase-block { grid-template-columns: 1fr; }
+      .phase-label-col { padding: 24px 32px; flex-direction: row; gap: 16px; align-items: center; }
+      .phase-num { font-size: 36px; margin-bottom: 0; }
+      .phase-items { grid-template-columns: 1fr; }
+      .additional-grid { grid-template-columns: 1fr 1fr; }
+      .proposal-inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .services-intro-inner, .phases-inner, .additional-inner, .proposal-inner { padding: 0 24px; }
+      .additional-grid { grid-template-columns: 1fr; }
+      .services-stat-row { grid-template-columns: 1fr; }
+      .phase-content { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">EMLS <span>Consulting</span></a>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label">Our Services</span>
+      <h1>Full-spectrum consulting,<br><em>every phase of development</em></h1>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="services-intro">
+    <div class="services-intro-inner">
+      <div class="fade-up">
+        <span class="section-label">What We Deliver</span>
+        <h2>From the first site visit to operational autonomy</h2>
+        <span class="gold-rule"></span>
+        <p>EMLS Consulting provides full-spectrum consulting services for the development and launch of mental health and substance use disorder treatment facilities. Our objective is to deliver a fully operational, compliant, and sustainable treatment facility positioned for long-term success.</p>
+        <p>We develop the full operational framework necessary for that success — including policies and procedures, clinical program structure, organizational design, staffing models, quality assurance systems, and operational workflows.</p>
+        <a href="contact.html" class="btn btn-primary">Request a Proposal</a>
+      </div>
+      <div class="services-stat-row fade-up" style="transition-delay:0.15s">
+        <div class="services-stat">
+          <div class="services-stat-num">4</div>
+          <div class="services-stat-label">Structured engagement phases</div>
+        </div>
+        <div class="services-stat">
+          <div class="services-stat-num">FL</div>
+          <div class="services-stat-label">AHCA &amp; DCF licensure expertise</div>
+        </div>
+        <div class="services-stat">
+          <div class="services-stat-num">25+</div>
+          <div class="services-stat-label">Years of behavioral health experience</div>
+        </div>
+        <div class="services-stat">
+          <div class="services-stat-num">US</div>
+          <div class="services-stat-label">Nationwide regulatory support</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASES -->
+  <section class="phases" id="feasibility">
+    <div class="phases-inner">
+      <span class="section-label fade-up">The Engagement Model</span>
+      <h2 class="fade-up">Four phases. One continuous commitment.</h2>
+      <p class="fade-up">Every EMLS Consulting engagement follows a structured four-phase model, designed to move your organization from initial concept to operational stability with no gaps in oversight.</p>
+
+      <div class="phase-block fade-up" id="feasibility">
+        <div class="phase-label-col">
+          <div class="phase-num">I</div>
+          <div class="phase-name">Strategic Development</div>
+        </div>
+        <div class="phase-content">
+          <h3>Feasibility &amp; Regulatory Planning</h3>
+          <p>We begin by building a clear picture of what is possible — evaluating your market, your location, and the regulatory environment you'll need to navigate. This phase lays the strategic foundation for everything that follows.</p>
+          <div class="phase-items">
+            <div class="phase-item">Market and feasibility analysis</div>
+            <div class="phase-item">Zoning and municipal compliance review</div>
+            <div class="phase-item">Real estate consultation</div>
+            <div class="phase-item">AHCA and DCF licensure strategy (Florida)</div>
+            <div class="phase-item">Multi-state regulatory navigation</div>
+            <div class="phase-item">Site identification support</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-block fade-up" id="licensing">
+        <div class="phase-label-col">
+          <div class="phase-num">II</div>
+          <div class="phase-name">Licensing &amp; Infrastructure</div>
+        </div>
+        <div class="phase-content">
+          <h3>Licensing &amp; Clinical Infrastructure</h3>
+          <p>We take the licensure process end-to-end — preparing and submitting your full application package, building the clinical program architecture, and designing the compliance framework your organization will need to operate with integrity.</p>
+          <div class="phase-items">
+            <div class="phase-item">Full application preparation and submission</div>
+            <div class="phase-item">Occupational licensing coordination</div>
+            <div class="phase-item">Policy and procedure development</div>
+            <div class="phase-item">Clinical program architecture</div>
+            <div class="phase-item">Residential, PHP &amp; IOP program design</div>
+            <div class="phase-item">Compliance and quality assurance systems</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-block fade-up" id="workforce">
+        <div class="phase-label-col">
+          <div class="phase-num">III</div>
+          <div class="phase-name">Organizational Development</div>
+        </div>
+        <div class="phase-content">
+          <h3>Organizational &amp; Workforce Development</h3>
+          <p>A compliant facility needs a capable team. We build the organizational infrastructure — from leadership recruitment to onboarding framework — that allows your program to function at the clinical and operational level it was designed for.</p>
+          <div class="phase-items">
+            <div class="phase-item">Executive leadership recruitment</div>
+            <div class="phase-item">Clinical and operational team hiring</div>
+            <div class="phase-item">Organizational chart design</div>
+            <div class="phase-item">Training and onboarding framework</div>
+            <div class="phase-item">Interdisciplinary team development</div>
+            <div class="phase-item">Role and workflow design</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-block fade-up" id="launch">
+        <div class="phase-label-col">
+          <div class="phase-num">IV</div>
+          <div class="phase-name">Launch &amp; Stabilization</div>
+        </div>
+        <div class="phase-content">
+          <h3>Launch, Oversight &amp; Stabilization</h3>
+          <p>We remain actively engaged through launch and into operational stability. Our phased transition model means we don't step back until your leadership team is clinically confident, regulatorily secure, and structurally prepared for long-term autonomy.</p>
+          <div class="phase-items">
+            <div class="phase-item">Pre-opening readiness assessment</div>
+            <div class="phase-item">On-site launch support</div>
+            <div class="phase-item">Clinical and operational oversight</div>
+            <div class="phase-item">Systems implementation and testing</div>
+            <div class="phase-item">Structured stabilization</div>
+            <div class="phase-item">Phased transition to autonomy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADDITIONAL SERVICES -->
+  <section class="additional">
+    <div class="additional-inner">
+      <span class="section-label fade-up">Additional Capabilities</span>
+      <h2 class="fade-up">Beyond facility development</h2>
+      <div class="additional-grid">
+        <div class="additional-card fade-up" style="transition-delay:0s">
+          <h4>Operational Stabilization</h4>
+          <p>For existing programs experiencing compliance challenges, leadership transitions, or operational instability. We assess, stabilize, and rebuild the systems needed for sustainable operations.</p>
+        </div>
+        <div class="additional-card fade-up" style="transition-delay:0.1s">
+          <h4>Quality Assurance &amp; Risk Management</h4>
+          <p>Comprehensive QA framework design and risk management system implementation — ensuring your program maintains clinical standards and regulatory compliance over time.</p>
+        </div>
+        <div class="additional-card fade-up" style="transition-delay:0.2s">
+          <h4>Policy &amp; Procedure Development</h4>
+          <p>Policies and procedures aligned with state, federal, and accreditation standards — built for how behavioral health programs actually operate, not just what auditors want to see.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPOSAL CTA -->
+  <section class="proposal-cta">
+    <div class="proposal-inner">
+      <div class="fade-up">
+        <h2>Ready to move forward?</h2>
+        <p>EMLS Consulting works with a select number of organizations at any given time to ensure every engagement receives the attention it requires. Reach out to discuss your program and what a consulting engagement would look like for your situation.</p>
+      </div>
+      <div class="proposal-actions fade-up" style="transition-delay:0.1s">
+        <a href="contact.html" class="btn btn-gold">Request a Proposal</a>
+        <a href="about.html" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.35);">Learn About EMLS</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">EMLS <span style="color:var(--gold)">Consulting</span></a>
+        <p>Transforming the system of mental health care through ethical practice, clinical excellence, and sustainable systems of care.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="contact.html">Send an Inquiry</a>
+        <a href="https://www.linkedin.com/in/sergio-muriel-lmhc-cap-diamond-behavioral-group-06406958/" target="_blank">LinkedIn</a>
+        <a href="#">Boca Raton, Florida</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 EMLS Consulting Services. All rights reserved.</span>
+      <span>Boca Raton, Florida &middot; Serving Clients Nationwide</span>
+    </div>
+  </footer>
+
+  <script src="shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | EMLS Consulting</title>
+  <meta name="description" content="Reach out to EMLS Consulting to discuss your behavioral health facility development, licensing, or operational stabilization needs.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ---- CONTACT LAYOUT ---- */
+    .contact-section { background: var(--warm-white); padding: 96px 0; }
+    .contact-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 1fr 520px;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* LEFT — Intro */
+    .contact-intro h2 { font-size: clamp(32px, 3.5vw, 48px); color: var(--teal); margin-bottom: 24px; }
+    .contact-intro p { font-size: 17px; color: var(--slate-mid); line-height: 1.85; margin-bottom: 24px; }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .contact-detail:first-of-type { border-top: 1px solid var(--border); }
+    .detail-icon {
+      width: 38px; height: 38px;
+      background: var(--teal-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .detail-icon svg { width: 16px; height: 16px; stroke: var(--teal); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .detail-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .detail-value { font-size: 15px; color: var(--slate); }
+    .detail-value a { color: var(--teal); text-decoration: none; }
+    .detail-value a:hover { text-decoration: underline; }
+
+    .response-note {
+      margin-top: 32px;
+      background: var(--teal-light);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 20px 24px;
+      font-size: 14px;
+      color: var(--slate);
+      line-height: 1.7;
+    }
+
+    /* RIGHT — Form */
+    .contact-form-wrap {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 48px;
+      position: sticky;
+      top: 96px;
+    }
+    .contact-form-wrap h3 {
+      font-size: 28px;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+    .contact-form-wrap > p {
+      font-size: 14px;
+      color: var(--slate-mid);
+      margin-bottom: 32px;
+      line-height: 1.65;
+    }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text);
+      background: var(--warm-white);
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--teal);
+      background: #fff;
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-submit {
+      width: 100%;
+      padding: 16px;
+      background-color: #0F4A52;
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: var(--teal-mid); transform: translateY(-1px); }
+    .form-submit:active { transform: none; }
+
+    .form-privacy {
+      font-size: 12px;
+      color: var(--slate-light);
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    /* Success state */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+    }
+    .form-success.show { display: block; }
+    .form-success-icon {
+      width: 56px; height: 56px;
+      background: var(--teal-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .form-success-icon svg { width: 24px; height: 24px; stroke: var(--teal); fill: none; stroke-width: 2; }
+    .form-success h4 { font-size: 26px; color: var(--teal); margin-bottom: 12px; }
+    .form-success p { font-size: 15px; color: var(--slate-mid); line-height: 1.7; }
+
+    /* ---- WHAT TO EXPECT ---- */
+    .expect { background-color: #0F4A52; padding: 80px 0; }
+    .expect-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .expect-inner h2 { font-size: clamp(28px, 3vw, 44px); color: #fff; margin-bottom: 48px; }
+    .expect-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .expect-step {}
+    .step-num {
+      font-family: Georgia, serif;
+      font-size: 52px;
+      color: rgba(255,255,255,0.15);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .step-title { font-size: 18px; font-weight: 400; color: #fff; margin-bottom: 10px; font-family: Georgia, serif; font-size: 22px; }
+    .step-desc { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.75; }
+
+    @media (max-width: 960px) {
+      .contact-inner { grid-template-columns: 1fr; }
+      .contact-form-wrap { position: static; }
+      .expect-steps { grid-template-columns: 1fr; gap: 28px; }
+    }
+    @media (max-width: 600px) {
+      .contact-inner, .expect-inner { padding: 0 24px; }
+      .contact-form-wrap { padding: 28px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">EMLS <span>Consulting</span></a>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html" class="nav-cta active">Get in Touch</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label">Get in Touch</span>
+      <h1>Let's talk about<br><em>what you're building</em></h1>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact-section">
+    <div class="contact-inner">
+
+      <div class="contact-intro fade-up">
+        <span class="section-label">Start the Conversation</span>
+        <h2>Every great program begins with a conversation.</h2>
+        <span class="gold-rule"></span>
+        <p>Whether you're at the very beginning of a facility development project, navigating a complex licensure process, or looking for stabilization support for an existing program — we'd like to understand where you are and what you need.</p>
+        <p>EMLS Consulting works with a select number of organizations at any given time to ensure every engagement receives the full attention it deserves. Use the form to tell us about your situation, and we'll be in touch promptly.</p>
+
+        <div class="contact-detail">
+          <div class="detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 6.13 7.03 3 12 3C16.97 3 21 6.13 21 10Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="detail-label">Location</div>
+            <div class="detail-value">Boca Raton, Florida &mdash; Serving Clients Nationwide</div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="detail-label">Email</div>
+            <div class="detail-value"><a href="mailto:emlsconsultingservices@gmail.com">emlsconsultingservices@gmail.com</a></div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 8A6 6 0 0 1 8 16L8 16A6 6 0 0 1 16 8M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z"/><path d="M10 9H14M10 12H14M10 15H12"/></svg>
+          </div>
+          <div>
+            <div class="detail-label">LinkedIn</div>
+            <div class="detail-value"><a href="https://www.linkedin.com/in/sergio-muriel-lmhc-cap-diamond-behavioral-group-06406958/" target="_blank">EMLS Consulting on LinkedIn</a></div>
+          </div>
+        </div>
+
+        <div class="response-note">
+          <strong>Typical response time:</strong> We aim to respond to all inquiries within one to two business days. If your situation is time-sensitive, please note that in your message.
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="contact-form-wrap fade-up" style="transition-delay:0.15s">
+        <h3>Send an Inquiry</h3>
+        <p>Tell us about your project or program. The more context you share, the better we can assess how EMLS Consulting can help.</p>
+
+        <form id="contactForm" action="https://formspree.io/f/mzdkezdp" method="POST" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Full name" required>
+            </div>
+            <div class="form-group">
+              <label for="org">Organization</label>
+              <input type="text" id="org" name="org" placeholder="Company or practice name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="need">Primary Need</label>
+            <select id="need" name="need">
+              <option value="" disabled selected>Select what best describes your situation</option>
+              <option>New facility development (concept stage)</option>
+              <option>Licensing &amp; regulatory navigation</option>
+              <option>Clinical program design</option>
+              <option>Workforce &amp; organizational development</option>
+              <option>Launch support &amp; stabilization</option>
+              <option>Existing program — operational issues</option>
+              <option>General inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="state">State(s) of Operation</label>
+            <input type="text" id="state" name="state" placeholder="e.g. Florida, Texas, or Nationwide">
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us More</label>
+            <textarea id="message" name="message" placeholder="Describe your project, program, or question. Where are you in the process? What challenges are you facing?"></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Inquiry</button>
+          <p class="form-privacy">Your information is kept strictly confidential and will not be shared with third parties.</p>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h4>Inquiry received.</h4>
+          <p>Thank you for reaching out. We'll review your message and be in touch within one to two business days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT TO EXPECT -->
+  <section class="expect">
+    <div class="expect-inner">
+      <span class="section-label fade-up">What Happens Next</span>
+      <h2 class="fade-up">What to expect after you reach out</h2>
+      <div class="expect-steps">
+        <div class="expect-step fade-up" style="transition-delay:0s">
+          <div class="step-num">01</div>
+          <div class="step-title">Initial Review</div>
+          <div class="step-desc">We review your inquiry and assess how EMLS Consulting's expertise aligns with your needs. We respond within one to two business days.</div>
+        </div>
+        <div class="expect-step fade-up" style="transition-delay:0.1s">
+          <div class="step-num">02</div>
+          <div class="step-title">Discovery Conversation</div>
+          <div class="step-desc">We schedule a call to understand your situation in depth — your goals, your timeline, your current stage, and where you need the most support.</div>
+        </div>
+        <div class="expect-step fade-up" style="transition-delay:0.2s">
+          <div class="step-num">03</div>
+          <div class="step-title">Proposal &amp; Agreement</div>
+          <div class="step-desc">If there's a fit, we'll provide a clear scope of services and consulting agreement outlining what the engagement looks like, what we'll deliver, and how we'll work together.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">EMLS <span style="color:var(--gold)">Consulting</span></a>
+        <p>Transforming the system of mental health care through ethical practice, clinical excellence, and sustainable systems of care.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="contact.html">Send an Inquiry</a>
+        <a href="https://www.linkedin.com/in/sergio-muriel-lmhc-cap-diamond-behavioral-group-06406958/" target="_blank">LinkedIn</a>
+        <a href="#">Boca Raton, Florida</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 EMLS Consulting Services. All rights reserved.</span>
+      <span>Boca Raton, Florida &middot; Serving Clients Nationwide</span>
+    </div>
+  </footer>
+
+  <script src="shared.js"></script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('.form-submit');
+      const originalText = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(this.action, {
+          method: 'POST',
+          body: new FormData(this),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          this.style.display = 'none';
+          document.getElementById('formSuccess').classList.add('show');
+        } else {
+          btn.textContent = 'Something went wrong — try again';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Network error — try again';
+        btn.disabled = false;
+      }
+
+      setTimeout(() => {
+        if (btn.disabled === false) {
+          btn.textContent = originalText;
+        }
+      }, 4000);
+    });
+  </script>
+</body>
+</html>

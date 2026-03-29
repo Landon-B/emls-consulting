@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | EMLS Consulting</title>
+  <meta name="description" content="Licensed Mental Health Counselor and Certified Addiction Professional with over 25 years of experience in behavioral health leadership and facility development.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ---- BIO SECTION ---- */
+    .bio-section { background: var(--warm-white); padding: 96px 0; }
+    .bio-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      gap: 80px;
+      align-items: start;
+    }
+    .bio-text h2 { font-size: clamp(32px, 3.5vw, 48px); color: var(--teal); margin-bottom: 24px; }
+    .bio-text p { font-size: 17px; color: var(--slate-mid); line-height: 1.85; margin-bottom: 24px; }
+
+    .bio-sidebar {
+      position: sticky;
+      top: 96px;
+    }
+    .sidebar-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .sidebar-card-header {
+      background-color: #0F4A52;
+      padding: 32px;
+    }
+    .sidebar-card-header h3 {
+      font-size: 26px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .sidebar-card-header p { font-size: 13px; color: rgba(255,255,255,0.65); letter-spacing: 0.08em; text-transform: uppercase; }
+    .sidebar-card-body { padding: 32px; }
+    .credential-badge {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .credential-badge:last-child { border-bottom: none; }
+    .badge-dot {
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .badge-text { font-size: 14px; color: var(--slate); line-height: 1.5; }
+    .sidebar-linkedin {
+      margin-top: 24px;
+      display: block;
+      text-align: center;
+      padding: 14px;
+      background: #0A66C2;
+      color: #fff;
+      text-decoration: none;
+      border-radius: var(--radius);
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .sidebar-linkedin:hover { background: #084d93; }
+
+    /* ---- MISSION SECTION ---- */
+    .mission-section { background: #fff; padding: 96px 0; }
+    .mission-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .mission-inner h2 { font-size: clamp(32px, 3.5vw, 52px); color: var(--teal); margin-bottom: 24px; }
+    .mission-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      margin-top: 56px;
+    }
+    .mission-col {
+      border-top: 2px solid var(--gold);
+      padding-top: 28px;
+    }
+    .mission-col h3 {
+      font-size: 24px;
+      color: var(--teal);
+      margin-bottom: 14px;
+    }
+    .mission-col p { font-size: 15px; color: var(--slate-mid); line-height: 1.75; }
+
+    /* ---- APPROACH ---- */
+    .approach { background-color: #0F4A52; padding: 96px 0; }
+    .approach-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .approach-inner h2 { font-size: clamp(32px, 3.5vw, 52px); color: #fff; margin-bottom: 48px; }
+    .approach-quote {
+      font-family: Georgia, serif;
+      font-size: clamp(22px, 3vw, 36px);
+      font-style: italic;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.5;
+      border-left: 2px solid var(--gold);
+      padding-left: 36px;
+      margin: 48px 0;
+      max-width: 800px;
+    }
+    .approach-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .approach-body p { font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.8; }
+
+    /* ---- CTA STRIP ---- */
+    .about-cta {
+      background: var(--gold-light);
+      padding: 80px 0;
+    }
+    .about-cta-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+    }
+    .about-cta h2 { font-size: clamp(28px, 3vw, 44px); color: var(--teal); }
+    .about-cta p { font-size: 16px; color: var(--slate-mid); margin-top: 12px; }
+
+    @media (max-width: 960px) {
+      .bio-inner { grid-template-columns: 1fr; }
+      .bio-sidebar { position: static; }
+      .mission-cols { grid-template-columns: 1fr; gap: 32px; }
+      .approach-body { grid-template-columns: 1fr; gap: 24px; }
+      .about-cta-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .bio-inner, .mission-inner, .approach-inner, .about-cta-inner { padding: 0 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">EMLS <span>Consulting</span></a>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label">About EMLS Consulting</span>
+      <h1>Experience that<br><em>drives outcomes</em></h1>
+    </div>
+  </div>
+
+  <!-- BIO SECTION -->
+  <section class="bio-section">
+    <div class="bio-inner">
+      <div class="bio-text fade-up">
+        <span class="section-label">Professional Background</span>
+        <h2>Two decades of behavioral health leadership</h2>
+        <span class="gold-rule"></span>
+
+        <p>With over two decades of experience in behavioral health leadership and facility development, EMLS Consulting partners with ownership groups, investors, and clinical leaders to successfully open and stabilize mental health and substance use disorder treatment centers.</p>
+
+        <p>Our work begins at concept development and continues through launch and stabilization. We assist clients in identifying appropriate real estate, evaluating zoning requirements, and navigating the complex municipal and state regulatory frameworks that govern behavioral health facilities.</p>
+
+        <p>In Florida, we provide strategic oversight for AHCA and DCF licensure, occupational licensing, and full regulatory application preparation. We also support compliance efforts across other U.S. jurisdictions, making EMLS Consulting an effective partner for organizations operating in multiple states.</p>
+
+        <p>Our approach balances clinical excellence, regulatory precision, and operational efficiency — allowing ownership groups to build compliant, sustainable, and profitable treatment programs that genuinely serve the populations they're designed to help.</p>
+
+        <a href="contact.html" class="btn btn-primary" style="margin-top:8px">Start a Conversation</a>
+      </div>
+
+      <div class="bio-sidebar fade-up" style="transition-delay:0.15s">
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">
+            <h3>EMLS Consulting</h3>
+            <p>Behavioral Health Systems Development</p>
+          </div>
+          <div class="sidebar-card-body">
+            <div class="credential-badge">
+              <div class="badge-dot"></div>
+              <div class="badge-text">Licensed Mental Health Counselor (LMHC)</div>
+            </div>
+            <div class="credential-badge">
+              <div class="badge-dot"></div>
+              <div class="badge-text">Certified Addiction Professional (CAP)</div>
+            </div>
+            <div class="credential-badge">
+              <div class="badge-dot"></div>
+              <div class="badge-text">25+ Years Behavioral Health Experience</div>
+            </div>
+            <div class="credential-badge">
+              <div class="badge-dot"></div>
+              <div class="badge-text">AHCA &amp; DCF Licensure Strategy — Florida</div>
+            </div>
+            <div class="credential-badge">
+              <div class="badge-dot"></div>
+              <div class="badge-text">Multi-State Regulatory Navigation</div>
+            </div>
+            <div class="credential-badge">
+              <div class="badge-dot"></div>
+              <div class="badge-text">Residential, PHP &amp; IOP Program Design</div>
+            </div>
+            <div class="credential-badge">
+              <div class="badge-dot"></div>
+              <div class="badge-text">Based in Boca Raton, FL &middot; Serving Nationwide</div>
+            </div>
+            <a href="https://www.linkedin.com/in/sergio-muriel-lmhc-cap-diamond-behavioral-group-06406958/" class="sidebar-linkedin" target="_blank">Connect on LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="mission-section">
+    <div class="mission-inner">
+      <span class="section-label fade-up">Our Focus</span>
+      <h2 class="fade-up">Three pillars that define<br>every engagement</h2>
+      <div class="mission-cols">
+        <div class="mission-col fade-up" style="transition-delay:0s">
+          <h3>Clinical Excellence</h3>
+          <p>Programs grounded in ethical practice and evidence-informed care. We believe that clinical quality is not a compliance checkbox — it is the foundation of every effective treatment environment we help build.</p>
+        </div>
+        <div class="mission-col fade-up" style="transition-delay:0.1s">
+          <h3>Regulatory Integrity</h3>
+          <p>Comprehensive licensure and compliance strategies, including AHCA and DCF in Florida and regulatory navigation nationwide. We move organizations through the licensure process with precision and without shortcuts.</p>
+        </div>
+        <div class="mission-col fade-up" style="transition-delay:0.2s">
+          <h3>Operational Sustainability</h3>
+          <p>Systems that support long-term stability, leadership development, and organizational resilience. We remain engaged through stabilization to ensure your team is positioned for autonomous success before we step back.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="approach">
+    <div class="approach-inner">
+      <span class="section-label">Our Philosophy</span>
+      <blockquote class="approach-quote fade-up">
+        "We do not simply advise — we collaborate, build, and support until your organization is clinically sound, compliant, and operationally secure."
+      </blockquote>
+      <div class="approach-body">
+        <p class="fade-up">EMLS Consulting was founded on the belief that transforming mental health care begins with strengthening the systems that deliver it. That means showing up at every phase — from the first site visit to the final stabilization handoff — with the same level of clinical rigor and operational discipline.</p>
+        <p class="fade-up" style="transition-delay:0.12s">We remain actively involved through pre-opening readiness and facility launch, ensuring systems are functional, teams are aligned, and compliance standards are met. Once operational stability is achieved, we transition leadership to autonomy with structured oversight reduction — not an abrupt departure.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT CTA -->
+  <section class="about-cta">
+    <div class="about-cta-inner">
+      <div class="fade-up">
+        <h2>Ready to build something meaningful?</h2>
+        <p>Let's talk about where you are and where you're trying to go.</p>
+      </div>
+      <div class="fade-up" style="transition-delay:0.1s">
+        <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">EMLS <span style="color:var(--gold)">Consulting</span></a>
+        <p>Transforming the system of mental health care through ethical practice, clinical excellence, and sustainable systems of care.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="contact.html">Send an Inquiry</a>
+        <a href="https://www.linkedin.com/in/sergio-muriel-lmhc-cap-diamond-behavioral-group-06406958/" target="_blank">LinkedIn</a>
+        <a href="#">Boca Raton, Florida</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 EMLS Consulting Services. All rights reserved.</span>
+      <span>Boca Raton, Florida &middot; Serving Clients Nationwide</span>
+    </div>
+  </footer>
+
+  <script src="shared.js"></script>
+</body>
+</html>
