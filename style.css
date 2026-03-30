@@ -56,6 +56,9 @@ nav {
 nav.scrolled { box-shadow: 0 4px 32px rgba(15,74,82,0.08); }
 
 .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--serif);
   font-size: 19px;
   font-weight: normal;
@@ -63,6 +66,10 @@ nav.scrolled { box-shadow: 0 4px 32px rgba(15,74,82,0.08); }
   color: var(--teal);
   text-decoration: none;
   text-transform: uppercase;
+}
+.nav-logo img {
+  height: 48px;
+  width: auto;
 }
 .nav-logo span { color: var(--gold); }
 
