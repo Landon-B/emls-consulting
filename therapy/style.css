@@ -1,0 +1,430 @@
+/* ===== EMLS Therapy — warm, clinical, softer sibling to EMLS Consulting ===== */
+:root {
+  --sage-deep: #3F5A4E;
+  --sage: #6B8475;
+  --sage-soft: #B8C9BD;
+  --cream: #F7F2E9;
+  --cream-warm: #F1E9D8;
+  --clay: #B8684A;
+  --clay-soft: #D88B6C;
+  --ink: #24302B;
+  --ink-soft: #556059;
+  --rule: rgba(63,90,78,0.14);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 400;
+  color: var(--sage-deep);
+  line-height: 1.15;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+section { padding: 110px 0; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--clay);
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px;
+}
+.eyebrow::before {
+  content: ''; display: block; width: 28px; height: 1px; background: var(--clay);
+}
+
+.btn {
+  display: inline-block;
+  padding: 16px 32px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: all 0.22s ease;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary { background: var(--clay); color: #fff; }
+.btn-primary:hover { background: #9E5638; transform: translateY(-1px); }
+.btn-outline {
+  background: transparent;
+  color: var(--sage-deep);
+  border: 1.5px solid var(--sage-deep);
+}
+.btn-outline:hover { background: var(--sage-deep); color: #fff; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  padding: 22px 40px;
+  background: rgba(247,242,233,0.92);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--rule);
+}
+.nav-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  color: var(--sage-deep);
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-logo img { height: 34px; width: auto; }
+.nav-logo span { color: var(--clay); font-style: italic; }
+.nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+.nav-links a {
+  font-size: 14px;
+  color: var(--ink-soft);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--clay); }
+.nav-cta {
+  background: var(--sage-deep);
+  color: #fff !important;
+  padding: 11px 22px;
+  border-radius: 999px;
+}
+.nav-cta:hover { background: var(--clay) !important; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 92vh;
+  display: flex; align-items: center;
+  background: linear-gradient(160deg, var(--cream) 0%, var(--cream-warm) 100%);
+  position: relative; overflow: hidden;
+  padding: 140px 0 100px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,104,74,0.08) 0%, transparent 70%);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -300px; left: -150px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(107,132,117,0.12) 0%, transparent 70%);
+}
+.hero-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 40px;
+  position: relative; z-index: 1;
+  max-width: 780px;
+}
+.hero h1 {
+  font-size: clamp(44px, 6vw, 76px);
+  margin-bottom: 28px;
+}
+.hero h1 em { color: var(--clay); font-style: italic; }
+.hero-sub {
+  font-size: 19px;
+  color: var(--ink-soft);
+  max-width: 600px;
+  margin-bottom: 44px;
+  line-height: 1.75;
+}
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ===== FOR-WHO ===== */
+.for-who { background: #fff; }
+.for-who h2 { font-size: clamp(30px, 4vw, 46px); margin-bottom: 16px; max-width: 640px; }
+.for-who-sub { font-size: 17px; color: var(--ink-soft); max-width: 600px; margin-bottom: 56px; }
+.issues-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.issue {
+  padding: 32px 28px;
+  background: var(--cream);
+  border-radius: 12px;
+  border: 1px solid var(--rule);
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+.issue:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(63,90,78,0.08); }
+.issue h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.issue p { font-size: 14px; color: var(--ink-soft); line-height: 1.7; }
+
+/* ===== APPROACH ===== */
+.approach { background: var(--sage-deep); color: #fff; }
+.approach h2 { color: #fff; font-size: clamp(32px, 4vw, 50px); margin-bottom: 20px; max-width: 720px; }
+.approach .eyebrow { color: var(--clay-soft); }
+.approach .eyebrow::before { background: var(--clay-soft); }
+.approach-lede {
+  font-size: 18px;
+  color: rgba(255,255,255,0.78);
+  max-width: 640px;
+  line-height: 1.8;
+  margin-bottom: 56px;
+}
+.modalities {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.modality {
+  padding: 26px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+}
+.modality h4 { color: #fff; font-size: 17px; margin-bottom: 8px; }
+.modality p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7; }
+
+/* ===== THERAPIST ===== */
+.therapist { background: var(--cream); }
+.therapist-inner {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.therapist-photo-wrap {
+  aspect-ratio: 4/5;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--sage-soft);
+  box-shadow: 0 18px 50px rgba(63,90,78,0.18);
+}
+.therapist-photo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.therapist-info h2 { font-size: clamp(32px, 4vw, 48px); margin-bottom: 8px; }
+.therapist-creds {
+  font-size: 14px;
+  color: var(--clay);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.therapist-info p {
+  font-size: 16px;
+  color: var(--ink-soft);
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+.licensure-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(107,132,117,0.14);
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--sage-deep);
+  margin-top: 8px;
+}
+.licensure-pill::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--sage);
+}
+
+/* ===== FEES ===== */
+.fees { background: #fff; }
+.fees-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 48px;
+}
+.fee-card {
+  padding: 44px 36px;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: var(--cream);
+}
+.fee-card h3 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.fee-card p { font-size: 15px; color: var(--ink-soft); line-height: 1.75; margin-bottom: 10px; }
+.fee-card .insurers {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* ===== FAQ ===== */
+.faq { background: var(--cream); }
+.faq h2 { font-size: clamp(30px, 4vw, 46px); margin-bottom: 48px; text-align: center; }
+.faq-list { max-width: 760px; margin: 0 auto; }
+.faq-item {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-item h3 {
+  font-size: 19px;
+  margin-bottom: 10px;
+  color: var(--sage-deep);
+}
+.faq-item p { font-size: 15px; color: var(--ink-soft); line-height: 1.75; }
+
+/* ===== CRISIS BANNER ===== */
+.crisis-banner {
+  background: var(--clay);
+  color: #fff;
+  padding: 22px 40px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.crisis-banner strong { font-weight: 600; }
+.crisis-banner a { color: #fff; text-decoration: underline; }
+
+/* ===== FORM ===== */
+.contact {
+  background: linear-gradient(165deg, var(--sage-deep) 0%, #2E4538 100%);
+  color: #fff;
+}
+.contact h2 { color: #fff; font-size: clamp(32px, 4vw, 50px); margin-bottom: 16px; }
+.contact .eyebrow { color: var(--clay-soft); }
+.contact .eyebrow::before { background: var(--clay-soft); }
+.contact-lede {
+  font-size: 17px;
+  color: rgba(255,255,255,0.75);
+  max-width: 580px;
+  line-height: 1.75;
+  margin-bottom: 48px;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 72px;
+  align-items: start;
+}
+.contact-info p {
+  color: rgba(255,255,255,0.72);
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+.contact-info strong { color: #fff; }
+
+form {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 40px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field { margin-bottom: 20px; }
+.field label {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 8px;
+}
+.field input, .field select, .field textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 15px;
+  font-family: inherit;
+  transition: border 0.2s, background 0.2s;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--clay-soft);
+  background: rgba(255,255,255,0.12);
+}
+.field textarea { resize: vertical; min-height: 110px; }
+.field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23D88B6C' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 18px center; padding-right: 40px; }
+.field select option { background: var(--sage-deep); color: #fff; }
+.privacy-note {
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.65;
+  margin: 8px 0 22px;
+  padding: 14px 16px;
+  background: rgba(184,104,74,0.12);
+  border-left: 2px solid var(--clay-soft);
+  border-radius: 4px;
+}
+form .btn-primary { width: 100%; padding: 18px; font-size: 15px; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: #1E2A24;
+  color: rgba(255,255,255,0.6);
+  padding: 72px 40px 32px;
+  font-size: 14px;
+}
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand .nav-logo { color: #fff; margin-bottom: 16px; }
+.footer-brand p { color: rgba(255,255,255,0.55); line-height: 1.75; max-width: 360px; }
+.footer-col h4 { color: #fff; font-family: 'Inter', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 18px; font-weight: 600; }
+.footer-col a { display: block; color: rgba(255,255,255,0.55); padding: 6px 0; transition: color 0.2s; }
+.footer-col a:hover { color: var(--clay-soft); }
+.footer-bottom {
+  max-width: 1100px;
+  margin: 32px auto 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+}
+.footer-disclaimer {
+  max-width: 1100px;
+  margin: 24px auto 0;
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.7;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  section { padding: 80px 0; }
+  .nav-links { gap: 20px; }
+  .nav-links li:not(:last-child) { display: none; }
+  .issues-grid { grid-template-columns: 1fr; }
+  .modalities { grid-template-columns: 1fr; }
+  .therapist-inner { grid-template-columns: 1fr; gap: 40px; }
+  .therapist-photo-wrap { max-width: 320px; }
+  .fees-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; }
+}
+@media (max-width: 600px) {
+  nav { padding: 18px 24px; }
+  .wrap, .hero-inner { padding: 0 24px; }
+  form { padding: 28px 22px; }
+}
